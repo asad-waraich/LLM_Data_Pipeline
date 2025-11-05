@@ -134,6 +134,7 @@ Epoch 2/3: loss=0.672, eval_loss=0.668
 Epoch 3/3: loss=0.651, eval_loss=0.656
 Model saved to ../models/biobert_summarizer
 ```
+![ML FLow Output](./results/mlFlow_DistilBERT.png)
 
 ## Model Evaluation
 
