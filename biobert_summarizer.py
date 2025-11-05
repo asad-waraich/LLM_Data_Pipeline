@@ -1,5 +1,3 @@
-# model-development/scripts/train_biobert_summarizer.py
-
 import os
 import sys
 import pandas as pd
