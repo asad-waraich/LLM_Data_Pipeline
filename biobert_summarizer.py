@@ -9,7 +9,6 @@ import mlflow
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-# Your exact project path
 BASE_DIR = "/Users/asadullahwaraich/Library/CloudStorage/OneDrive-HigherEducationCommission/Desktop/NEU Fall 2025/MLOps/Project/Github/lab-lens"
 
 # Add data-pipeline to Python path
@@ -46,10 +45,9 @@ class MedicalTextDataset(Dataset):
 
 def load_pipeline_data():
     """Load processed data from your data pipeline"""
-    # Your exact data paths
     data_dir = os.path.join(BASE_DIR, 'data-pipeline', 'data', 'processed')
     
-    # Load your 47-feature dataset
+    # Load 47-feature dataset
     features_path = os.path.join(data_dir, 'mimic_features_advanced.csv')
     
     # Load the original processed text
@@ -87,10 +85,10 @@ def load_pipeline_data():
 
 def prepare_summarization_data(df):
     """Prepare data for summarization task"""
-    # Use your engineered features to create labels
-    # For summarization, we'll create importance scores based on your features
+    # Use features to create labels
+    # For summarization, we'll create importance scores based on features
     
-    # Create pseudo-labels for training (you can modify this based on your needs)
+    # Create pseudo-labels for training
     # High importance if: urgent, high abnormal labs, complex
     df['importance_score'] = (
         df['urgency_indicator'] * 0.4 +
@@ -130,8 +128,8 @@ def main():
     X_train = X_train.reset_index(drop=True)
     X_test = X_test.reset_index(drop=True)
 
-    X_train = X_train[:100]  # Only 100 training samples
-    X_test = X_test[:50]     # Only 50 test samples
+    X_train = X_train[:100]  #  100 training samples
+    X_test = X_test[:50]     #  50 test samples
     y_train = y_train[:100]
     y_test = y_test[:50]
 
@@ -143,7 +141,7 @@ def main():
     model_name = "distilbert-base-uncased"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     
-    # For extractive summarization, we'll use BioBERT for sequence classification
+    # For extractive summarization, can use DistilBERT oro BioBERT for sequence classification
     # This will classify whether a sentence is important or not
     model = AutoModelForSequenceClassification.from_pretrained(
         model_name,
